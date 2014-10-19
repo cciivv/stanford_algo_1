@@ -9,12 +9,15 @@ def merge_count_inv(B, C):
     j = 0
     inv = 0
     D = []
+    #inv = []
     for k in range(len(B) + len(C)):
         if j >= len(C) or (i < len(B) and B[i] <= C[j]): #use logic shortcuts to prevent out of bounds list access
             D.append(B[i])
             i+=1
         else:
             D.append(C[j])
+            #for x in range(i,len(B)):
+                #inv.append((B[x],C[j]))
             inv += len(B) - i
             j+=1
     return inv, D
@@ -22,6 +25,7 @@ def merge_count_inv(B, C):
 def count_inv(A):
     if len(A) <= 1:
         return (0, A)
+        #return ([], A)
     left, B = count_inv(left_side(A))
     right, C = count_inv(right_side(A))
     split, D = merge_count_inv(B,C)
