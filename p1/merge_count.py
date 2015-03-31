@@ -39,7 +39,6 @@ if (len(sys.argv) <= 1):
     print("bad input")
 else:
     with open(sys.argv[1]) as f:
-        A = f.readlines()
-        A = [int(x.strip("\n")) for x in A]
+        A = [int(line.rstrip()) for line in f]
     inv, D = count_inv(A);
     print("inversions = ", inv)
